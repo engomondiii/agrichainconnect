@@ -1,35 +1,53 @@
 :root {
-  /* Primary Colors - Agricultural Green Theme */
-  --color-primary: #2D5016;
-  --color-primary-light: #4A7C2B;
-  --color-primary-dark: #1A3009;
-  --color-primary-hover: #3D6620;
+  /* Primary Colors - Forest Green Theme */
+  --color-primary: #2E7D32;
+  --color-primary-light: #4CAF50;
+  --color-primary-dark: #1B5E20;
+  --color-primary-hover: #1B5E20;
   
-  /* Secondary Colors - Harvest Gold/Orange */
-  --color-secondary: #F2A922;
-  --color-secondary-light: #F5C04D;
-  --color-secondary-dark: #D68E0D;
-  --color-secondary-hover: #E09B15;
+  /* Secondary Colors - Harvest Orange, Sky Blue, Golden Yellow */
+  --color-secondary: #F57C00;
+  --color-secondary-light: #FFB74D;
+  --color-secondary-dark: #E65100;
+  --color-secondary-hover: #F57C00;
+  
+  --color-secondary-blue: #1976D2;
+  --color-secondary-blue-light: #64B5F6;
+  --color-secondary-blue-dark: #0D47A1;
+  
+  --color-secondary-yellow: #FDD835;
+  --color-secondary-yellow-light: #FFF176;
+  --color-secondary-yellow-dark: #F9A825;
   
   /* Accent Colors */
-  --color-accent-green: #7CB342;
+  --color-accent-green: #2E7D32;
   --color-accent-blue: #1976D2;
-  --color-accent-orange: #FB8C00;
+  --color-accent-orange: #F57C00;
+  --color-accent-yellow: #FDD835;
+  --color-accent-purple: #7B1FA2;
   --color-accent-teal: #00897B;
   
   /* Text Colors */
-  --color-text-primary: #212121;
+  --color-text-heading: #1B5E20;
+  --color-text-primary: #424242;
   --color-text-secondary: #616161;
-  --color-text-tertiary: #9E9E9E;
-  --color-text-disabled: #BDBDBD;
+  --color-text-tertiary: #757575;
+  --color-text-disabled: #9E9E9E;
   --color-text-inverse: #FFFFFF;
   
   /* Background Colors */
+  --color-bg-page: #F5F5F5;
   --color-bg-primary: #FFFFFF;
   --color-bg-secondary: #F5F5F5;
   --color-bg-tertiary: #FAFAFA;
-  --color-bg-dark: #212121;
+  --color-bg-dark: #424242;
   --color-bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* Alternative Backgrounds */
+  --color-bg-success: #E8F5E9;
+  --color-bg-warning: #FFF3E0;
+  --color-bg-info: #E3F2FD;
+  --color-bg-error: #FFEBEE;
   
   /* Card & Surface Colors */
   --color-card-bg: #FFFFFF;
@@ -45,36 +63,48 @@
   --color-error-light: #E57373;
   --color-error-dark: #D32F2F;
   
-  --color-warning: #FF9800;
-  --color-warning-light: #FFB74D;
+  --color-warning: #FDD835;
+  --color-warning-light: #FFF176;
   --color-warning-dark: #F57C00;
   
-  --color-info: #2196F3;
+  --color-info: #1976D2;
   --color-info-light: #64B5F6;
-  --color-info-dark: #1976D2;
+  --color-info-dark: #0D47A1;
   
   /* Trust Score Colors */
-  --color-trust-high: #4CAF50;
-  --color-trust-medium: #FF9800;
+  --color-trust-high: #2E7D32;
+  --color-trust-medium: #F57C00;
   --color-trust-low: #F44336;
-  --color-trust-new: #2196F3;
+  --color-trust-new: #1976D2;
   
   /* Border Colors */
   --color-border-light: #E0E0E0;
   --color-border-medium: #BDBDBD;
   --color-border-dark: #757575;
+  --color-border-primary: #2E7D32;
   
   /* Shadow Colors */
-  --color-shadow-light: rgba(0, 0, 0, 0.1);
-  --color-shadow-medium: rgba(0, 0, 0, 0.15);
-  --color-shadow-dark: rgba(0, 0, 0, 0.25);
+  --color-shadow-light: rgba(0, 0, 0, 0.08);
+  --color-shadow-medium: rgba(0, 0, 0, 0.1);
+  --color-shadow-dark: rgba(0, 0, 0, 0.15);
+  --color-shadow-hover: rgba(46, 125, 50, 0.15);
   
   /* Gradient Colors */
-  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  --gradient-secondary: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
-  --gradient-success: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-light) 100%);
+  --gradient-primary: linear-gradient(135deg, #2E7D32 0%, #4CAF50 100%);
+  --gradient-secondary: linear-gradient(135deg, #F57C00 0%, #FFB74D 100%);
+  --gradient-success: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);
+  --gradient-info: linear-gradient(135deg, #1976D2 0%, #64B5F6 100%);
   
   /* Overlay Colors */
-  --overlay-light: rgba(255, 255, 255, 0.9);
+  --overlay-light: rgba(255, 255, 255, 0.95);
+  --overlay-medium: rgba(255, 255, 255, 0.8);
   --overlay-dark: rgba(0, 0, 0, 0.6);
+  
+  /* Chart Colors for Data Visualization */
+  --chart-color-1: #2E7D32;
+  --chart-color-2: #1976D2;
+  --chart-color-3: #F57C00;
+  --chart-color-4: #FDD835;
+  --chart-color-5: #7B1FA2;
+  --chart-color-6: #00897B;
 }

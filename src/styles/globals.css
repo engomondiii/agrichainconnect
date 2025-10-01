@@ -1,5 +1,7 @@
 /* CSS Reset & Normalize */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -15,22 +17,30 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-bg-page);
   overflow-x: hidden;
 }
 
 /* Remove default styles */
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
@@ -38,6 +48,13 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+}
+
+/* Prevent text selection on buttons for better UX */
+button,
+[role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 /* Scrollbar Styling */
@@ -53,6 +70,7 @@ button {
 ::-webkit-scrollbar-thumb {
   background: var(--color-border-medium);
   border-radius: 6px;
+  border: 3px solid var(--color-bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -67,16 +85,16 @@ button {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-primary);
   color: var(--color-text-inverse);
 }
 
 ::-moz-selection {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-primary);
   color: var(--color-text-inverse);
 }
 
-/* Focus Styles */
+/* Focus Styles - Accessibility */
 :focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
@@ -98,6 +116,11 @@ button {
   opacity: 0.6;
 }
 
+[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 /* Container */
 .container {
   width: 100%;
@@ -108,8 +131,34 @@ button {
 
 @media (min-width: 768px) {
   .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
     padding: 0 2rem;
   }
+}
+
+/* Wide Container */
+.container-wide {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-wide {
+    padding: 0 2rem;
+  }
+}
+
+/* Fluid Container */
+.container-fluid {
+  width: 100%;
+  padding: 0 1rem;
 }
 
 /* Screen Reader Only */
@@ -125,7 +174,7 @@ button {
   border-width: 0;
 }
 
-/* Skip to Content */
+/* Skip to Content - Accessibility */
 .skip-to-content {
   position: absolute;
   top: -40px;
@@ -135,6 +184,7 @@ button {
   padding: 0.5rem 1rem;
   text-decoration: none;
   z-index: 100;
+  border-radius: 0 0 4px 0;
 }
 
 .skip-to-content:focus {
@@ -147,38 +197,147 @@ button {
   opacity: 0.6;
 }
 
+/* Skeleton Loading */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-secondary) 25%,
+    var(--color-bg-tertiary) 50%,
+    var(--color-bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* Transitions */
 .transition-all {
   transition: all 0.3s ease;
+}
+
+.transition-fast {
+  transition: all 0.15s ease;
 }
 
 .transition-colors {
   transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
+.transition-transform {
+  transition: transform 0.3s ease;
+}
+
+/* Smooth Transitions for Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide/Show Utilities */
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 /* Print Styles */
 @media print {
-  * {
+  *,
+  *::before,
+  *::after {
     background: transparent !important;
-    color: black !important;
+    color: #000000 !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
 
-  a, a:visited {
+  body {
+    background-color: #ffffff !important;
+  }
+
+  a,
+  a:visited {
     text-decoration: underline;
+    color: #000000 !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
   }
 
   img {
     page-break-inside: avoid;
+    max-width: 100% !important;
   }
 
-  p, h2, h3 {
+  p,
+  h2,
+  h3 {
     orphans: 3;
     widows: 3;
   }
 
-  h2, h3 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     page-break-after: avoid;
+    page-break-inside: avoid;
   }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  /* Hide navigation, buttons, and interactive elements */
+  nav,
+  button,
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border-light: #000000;
+    --color-border-medium: #000000;
+  }
+
+  button,
+  a {
+    text-decoration: underline;
+  }
+}
+
+/* Dark Mode Support (Future Enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* Placeholder for dark mode variables if needed */
 }
