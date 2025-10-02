@@ -1,14 +1,15 @@
 import axios from 'axios';
-import { API_CONFIG } from '@config/constants';
-import { getAuthToken, setAuthToken, clearAuthData } from '@services/utils/localStorage';
-import { handleApiError } from '@services/utils/errorHandler';
+
+// Configuration
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_TIMEOUT = 30000;
 
 /**
  * Create axios instance
  */
 const apiClient = axios.create({
-  baseURL: API_CONFIG.BASE_URL,
-  timeout: API_CONFIG.TIMEOUT,
+  baseURL: API_BASE_URL,
+  timeout: API_TIMEOUT,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -19,7 +20,7 @@ const apiClient = axios.create({
  */
 apiClient.interceptors.request.use(
   (config) => {
-    const token = getAuthToken();
+    const token = localStorage.getItem('authToken');
     
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -75,15 +76,15 @@ apiClient.interceptors.response.use(
 
       try {
         // Attempt to refresh token
-        const refreshToken = localStorage.getItem('agrichain_refresh_token');
+        const refreshToken = localStorage.getItem('refreshToken');
         
         if (refreshToken) {
-          const response = await axios.post(`${API_CONFIG.BASE_URL}/auth/refresh`, {
+          const response = await axios.post(`${API_BASE_URL}/auth/refresh`, {
             refreshToken,
           });
 
           const { token } = response.data;
-          setAuthToken(token);
+          localStorage.setItem('authToken', token);
 
           // Retry original request with new token
           originalRequest.headers.Authorization = `Bearer ${token}`;
@@ -91,20 +92,26 @@ apiClient.interceptors.response.use(
         }
       } catch (refreshError) {
         // Refresh failed - clear auth data and redirect to login
-        clearAuthData();
-        window.location.href = '/login';
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('refreshToken');
+        window.location.href = '/auth/login';
         return Promise.reject(refreshError);
       }
     }
 
     // Handle 403 Forbidden
     if (error.response?.status === 403) {
-      // User doesn't have permission
-      // You can redirect or show error message
+      console.error('Access forbidden');
     }
 
     // Parse and return error
-    return Promise.reject(handleApiError(error, originalRequest?.url));
+    const apiError = {
+      message: error.response?.data?.message || error.message || 'An error occurred',
+      status: error.response?.status,
+      data: error.response?.data
+    };
+
+    return Promise.reject(apiError);
   }
 );
 
