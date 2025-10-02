@@ -10,14 +10,14 @@ const Home = () => {
         <div className="container">
           <div className="hero__content">
             <h1 className="hero__title">
-              Empowering Smallholder Farmers Through Direct Market Access
+              Empowering Farmers Through Direct Market Access
             </h1>
             <p className="hero__subtitle">
               Transform your harvest into opportunity. Connect directly with global buyers, 
               eliminate middlemen, and build a sustainable farming future.
             </p>
             <div className="hero__actions">
-              <Link to="/register" className="btn btn--primary btn--large">
+              <Link to="/auth/register" className="btn btn--primary btn--large">
                 Get Started
               </Link>
               <Link to="/how-it-works" className="btn btn--secondary btn--large">

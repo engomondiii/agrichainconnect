@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PUBLIC_ROUTES } from '@config/routes';
-import { SOCIAL_LINKS, APP_INFO } from '@config/constants';
 import './Footer.css';
 
 const Footer = () => {
@@ -18,6 +16,29 @@ const Footer = () => {
   };
 
   const currentYear = new Date().getFullYear();
+
+  // Define routes inline
+  const PUBLIC_ROUTES = {
+    MARKETPLACE: '/marketplace',
+    HOW_IT_WORKS: '/how-it-works',
+    IMPACT: '/impact',
+    ABOUT: '/about',
+    CONTACT: '/contact'
+  };
+
+  // Define social links inline
+  const SOCIAL_LINKS = {
+    FACEBOOK: 'https://facebook.com',
+    TWITTER: 'https://twitter.com',
+    LINKEDIN: 'https://linkedin.com',
+    INSTAGRAM: 'https://instagram.com'
+  };
+
+  // Define app info inline
+  const APP_INFO = {
+    NAME: 'Agri-Chain Connect',
+    VERSION: '1.0.0'
+  };
 
   return (
     <footer className="footer">

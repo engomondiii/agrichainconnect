@@ -39,6 +39,8 @@ const FAQ = lazy(() => import('./pages/FAQ/FAQ'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService/TermsOfService'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
+const HowItWorks = lazy(() => import('./pages/HowItWorks/HowItWorks'));
+const Impact = lazy(() => import('./pages/Impact/Impact'));
 
 // Helper component to redirect to appropriate dashboard
 const DashboardRedirect = () => {
@@ -70,16 +72,18 @@ function App() {
             <Routes>
               {/* Public Routes */}
               <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="about" element={<About />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="faq" element={<FAQ />} />
-                <Route path="privacy" element={<PrivacyPolicy />} />
-                <Route path="terms" element={<TermsOfService />} />
-                <Route path="marketplace" element={<Marketplace />} />
-                <Route path="token/:tokenId" element={<TokenDetails />} />
-                <Route path="secondary-market" element={<SecondaryMarket />} />
-              </Route>
+  <Route index element={<Home />} />
+  <Route path="about" element={<About />} />
+  <Route path="how-it-works" element={<HowItWorks />} />
+  <Route path="impact" element={<Impact />} />
+  <Route path="contact" element={<Contact />} />
+  <Route path="faq" element={<FAQ />} />
+  <Route path="privacy" element={<PrivacyPolicy />} />
+  <Route path="terms" element={<TermsOfService />} />
+  <Route path="marketplace" element={<Marketplace />} />
+  <Route path="token/:tokenId" element={<TokenDetails />} />
+  <Route path="secondary-market" element={<SecondaryMarket />} />
+</Route>
 
               {/* Auth Routes */}
               <Route path="/auth">
